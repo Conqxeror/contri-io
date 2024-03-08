@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI-Powered Code Assistant
 
-## Getting Started
+This project provides an AI-powered assistant to help developers with code changes, issue fixing, and custom modifications. It utilizes generative AI to analyze code, understand user requests, and suggest potential solutions.
 
-First, run the development server:
+# Features
 
+* Fix Issues:  Identify and address issues within a provided codebase. 
+* Make Code Changes:  Incorporate user-specified modifications to existing code.
+* Generative AI Assistance: Leverage Google's Generative AI to understand code context and propose solutions.
+* GitHub Integration:  Seamlessly work with code hosted on GitHub repositories.
+* Markdown & PDF Generation:  Generate well-formatted reports of the codebase, issues, and suggested solutions.
+
+# How it Works
+
+1.  Provide Code:  Specify a GitHub repository URL or upload your code locally. (Local functionality not currently implemented)
+2.  Describe Issue/Changes: Detail the issue you want to fix or the modifications you desire.
+3.  AI Analysis & Response:  The AI assistant analyzes the code and user input, then suggests potential solutions.
+
+# Installation
+
+1.  Prerequisites: Node.js and npm (or yarn) are required.
+2.  Clone Repository:  
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/ai-powered-code-assistant.git
+```
+3.  Install Dependencies:  
+```bash
+cd ai-powered-code-assistant
+npm install
+```
+4.  Create a `.env` File:  Create a `.env` file in the project root directory and add the following lines, replacing the placeholders with your actual values:
+
+```
+API_KEY=YOUR_GOOGLE_API_KEY
+PORT=3001  # You can adjust the port number if needed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5.  Start the Server:  
+```bash
+npm start
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1.  API Endpoints:  The project provides two main functionalities through API endpoints:
+    - `/generate-files`: This endpoint takes a GitHub repository URL as input and generates an MDX file with the code, a PDF file containing the code content, and a JSON file listing relevant issues from the repository.
+    - `/fix-issue`: This endpoint allows you to specify a GitHub repository URL, custom changes (optional), and an issue number (optional). It then utilizes the AI model to analyze the code and suggest solutions based on the provided information.
+2.  Client-Side Example:  The `ChatScreen` component included in the `client-side` folder demonstrates a basic example of interacting with the `/fix-issue` endpoint. You can integrate this component or develop your own front-end application to interact with the API.
 
-## Learn More
+# Contributing
 
-To learn more about Next.js, take a look at the following resources:
+We welcome contributions to this project! Please see the CONTRIBUTING.md file for guidelines on how to contribute.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License. See the LICENSE file for details.
