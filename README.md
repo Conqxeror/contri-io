@@ -3,10 +3,10 @@
 This project provides an AI-powered assistant to help developers with code changes, issue fixing, and custom modifications. It utilizes generative AI to analyze code, understand user requests, and suggest potential solutions.
 
 ## Backend: 
-[text](https://github.com/Conqxeror/contri-api)
+[https://github.com/Conqxeror/contri-api](https://github.com/Conqxeror/contri-api)
 
 ## Frontend: 
-[text](https://github.com/Conqxeror/contri-io)
+[https://github.com/Conqxeror/contri-io](https://github.com/Conqxeror/contri-io)
 
 # Features
 
