@@ -1,4 +1,4 @@
-# AI-Powered Code Assistant
+# AI-Powered Code Assistant - Contri.io
 
 This project provides an AI-powered assistant to help developers with code changes, issue fixing, and custom modifications. It utilizes generative AI to analyze code, understand user requests, and suggest potential solutions.
 
