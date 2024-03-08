@@ -21,11 +21,11 @@ This project provides an AI-powered assistant to help developers with code chang
 1.  Prerequisites: Node.js and npm (or yarn) are required.
 2.  Clone Repository:  
 ```bash
-git clone https://github.com/your-username/ai-powered-code-assistant.git
+git clone https://github.com/Conqxeror/contri-io.git
 ```
 3.  Install Dependencies:  
 ```bash
-cd ai-powered-code-assistant
+cd contri-io
 npm install
 ```
 4.  Create a `.env` File:  Create a `.env` file in the project root directory and add the following lines, replacing the placeholders with your actual values:
