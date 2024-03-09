@@ -35,7 +35,7 @@ export default function ChatScreen() {
 
       try {
         setIsTyping(true);
-        const response = await axios.post('https://contri-api.vercel.app/fix-issue/', {
+        const response = await axios.post('/api/genai', {
           githubRepoURL,
           customChanges,
           issueNumber,
