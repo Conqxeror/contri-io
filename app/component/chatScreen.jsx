@@ -56,7 +56,7 @@ export default function ChatScreen() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-lg shadow-lg mt-5">
+    <div className="flex flex-col h-full bg-white rounded-lg shadow-lg mt-5 overflow-hidden">
       <div className="flex-grow overflow-y-auto p-4">
         {chatMessages.map((msg, index) => (
           <div
@@ -88,35 +88,37 @@ export default function ChatScreen() {
           </div>
         )}
       </div>
-      <div className="flex items-center p-4 bg-gray-100 rounded-b-lg">
-        <input
-          type="text"
-          value={githubRepoURL}
-          onChange={handleGithubRepoURLChange}
-          placeholder="Github URL"
-          className="flex-grow border rounded-lg px-4 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="text"
-          value={customChanges}
-          onChange={handleCustomChangesChange}
-          placeholder="Custom Changes"
-          className="flex-grow border rounded-lg px-4 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="text"
-          value={issueNumber}
-          onChange={handleIssueNumberChange}
-          placeholder="Issue N."
-          className="w-20 border rounded-lg px-4 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={sendMessage}
-          className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
-        >
-          Send
-        </button>
+      <div className="p-4 bg-gray-100 rounded-b-lg">
+        <div className="flex flex-wrap justify-center items-center gap-2">
+          <input
+            type="text"
+            value={githubRepoURL}
+            onChange={handleGithubRepoURLChange}
+            placeholder="Github URL"
+            className="border rounded-lg px-4 py-2 mb-2 sm:mb-0 w-full sm:w-auto"
+          />
+          <input
+            type="text"
+            value={customChanges}
+            onChange={handleCustomChangesChange}
+            placeholder="Custom Changes"
+            className="border rounded-lg px-4 py-2 mb-2 sm:mb-0 w-full sm:w-auto"
+          />
+          <input
+            type="text"
+            value={issueNumber}
+            onChange={handleIssueNumberChange}
+            placeholder="Issue #"
+            className="border rounded-lg px-4 py-2 mb-2 sm:mb-0 w-full sm:w-auto"
+          />
+          <button
+            onClick={sendMessage}
+            className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-300 w-full md:w-auto"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
-};
+}
