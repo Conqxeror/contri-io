@@ -1,17 +1,16 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
 export default function ChatScreen() {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [githubRepoURL, setGithubRepoURL] = useState('');
   const [customChanges, setCustomChanges] = useState('');
   const [issueNumber, setIssueNumber] = useState('');
-  const responseRef = useRef('');
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
@@ -35,39 +34,23 @@ export default function ChatScreen() {
       setChatMessages([...chatMessages, requestSentMessage]);
 
       try {
-        setIsLoading(true);
-        responseRef.current = '';
-        const response = await axios.post(
-          'https://contri-api.vercel.app/fix-issue/',
-          {
-            githubRepoURL,
-            customChanges,
-            issueNumber,
-          },
-          {
-            responseType: 'stream',
-          }
-        );
+        setIsTyping(true);
+        const response = await axios.post('https://contri-api.vercel.app/fix-issue/', {
+          githubRepoURL,
+          customChanges,
+          issueNumber,
+        });
 
-        response.data.on('data', (chunk) => {
-          responseRef.current += chunk.toString();
+        setTimeout(() => {
           setChatMessages([
             ...chatMessages,
-            { sender: 'server', text: responseRef.current },
+            { sender: 'server', text: response.data.response },
           ]);
-        });
-
-        response.data.on('end', () => {
-          setIsLoading(false);
-        });
-
-        response.data.on('error', (error) => {
-          console.error('Error fetching response:', error);
-          setIsLoading(false);
-        });
+          setIsTyping(false);
+        }, 2000); // Simulating a 2-second delay for typing indicator
       } catch (error) {
         console.error('Error fetching response:', error);
-        setIsLoading(false);
+        setIsTyping(false);
       }
     }
   };
@@ -93,7 +76,7 @@ export default function ChatScreen() {
             </div>
           </div>
         ))}
-        {isLoading && (
+        {isTyping && (
           <div className="flex justify-start mb-4">
             <div className="rounded-lg px-4 py-2 max-w-lg bg-gray-300 text-black">
               <div className="flex space-x-2">
@@ -136,4 +119,4 @@ export default function ChatScreen() {
       </div>
     </div>
   );
-}
+};
