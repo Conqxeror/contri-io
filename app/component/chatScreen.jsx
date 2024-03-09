@@ -29,7 +29,7 @@ export default function ChatScreen() {
   };
 
   const sendMessage = async () => {
-    if (githubRepoURL && issueNumber) {
+    if (githubRepoURL) {
       const requestSentMessage = { sender: 'user', text: 'Request sent' };
       setChatMessages([...chatMessages, requestSentMessage]);
 
@@ -56,7 +56,7 @@ export default function ChatScreen() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-lg shadow-lg mt-5 md:mx-auto md:w-3/4 lg:w-1/2">
+    <div className="flex flex-col h-full bg-white rounded-lg shadow-lg mt-5">
       <div className="flex-grow overflow-y-auto p-4">
         {chatMessages.map((msg, index) => (
           <div
@@ -100,24 +100,23 @@ export default function ChatScreen() {
           type="text"
           value={customChanges}
           onChange={handleCustomChangesChange}
-          placeholder="Custom Changes (optional)"
+          placeholder="Custom Changes"
           className="flex-grow border rounded-lg px-4 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="text"
           value={issueNumber}
           onChange={handleIssueNumberChange}
-          placeholder="Issue #"
+          placeholder="Issue N."
           className="w-20 border rounded-lg px-4 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           onClick={sendMessage}
-          disabled={!githubRepoURL || !issueNumber}
-          className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
         >
           Send
         </button>
       </div>
     </div>
   );
-}
+};
